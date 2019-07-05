@@ -31,6 +31,8 @@ kits.formatDate = function (date) {
     if (!date instanceof Date) {
       return;
     }
+    let date2 = new Date();
+    date = date || date2;
     let y = date.getFullYear();
     let M = date.getMonth()+1;
     let d = date.getDate();
@@ -43,4 +45,12 @@ kits.formatDate = function (date) {
     m = m < 10 ? '0' + m : m;
     s = s < 10 ? '0' + s : s;
     return y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s ;
+}
+// 封装一个可以生成唯一id的方法
+kits.primaryKey = function(){
+    //获取当前时间的总毫秒数
+    let now = Date.now();
+    //生成一个大额的随机整数
+    let r = kits.randomInt(100000,999999);
+    return now + '' + r;
 }
